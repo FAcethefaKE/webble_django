@@ -18,20 +18,26 @@ class Author(models.Model):
         return f'{self.name} {self.surname}'
 
 
+class Genre(models.Model):
+    genre = models.CharField(max_length=80, blank=False)
+
+    def __str__(self):
+        return f'{self.genre}'
+
 class Book(models.Model):
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
     publishing_date = models.DateField()
-    genre = models.CharField(max_length=50)
+    genres = models.ManyToManyField(Genre)
 
     def get_authors(self):
         return ', '.join(str(author) for author in self.authors.all())
 
-    def get_absolute_url(self):
-        return reverse('book', args=[str(self.id)])
+    def get_genres(self):
+        return ', '.join(str(genre) for genre in self.genres.all())
 
     def __str__(self):
-        return f'{self.title} - {self.genre}'
+        return f'{self.title} - {self.genres}'
 
 
 class ReadingProgress(models.Model):
