@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 
 class Author(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=80, blank=False)
     surname = models.CharField(max_length=80, blank=False)
     country = models.CharField(max_length=80, blank=False)
@@ -20,7 +19,6 @@ class Author(models.Model):
 
 
 class Book(models.Model):
-    id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
     publishing_date = models.DateField()
