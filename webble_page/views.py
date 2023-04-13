@@ -1,11 +1,6 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from django.contrib.auth import login, logout, authenticate
-
-
-def index(request):
-    return HttpResponse("Hello Webble!")
 
 
 def sign_up(request):
