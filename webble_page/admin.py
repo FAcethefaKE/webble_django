@@ -1,8 +1,15 @@
 from django.contrib import admin
+from .models import Author, Book, ReadingProgress, Genre
 
-from .models import User, Author, Book, ReadingProgress
 
-admin.site.register(User)
-admin.site.register(Author)
-admin.site.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'get_authors', 'get_genres')
+
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'surname', 'country')
+
+
+admin.site.register(Author, AuthorAdmin)
+admin.site.register(Book, BookAdmin)
 admin.site.register(ReadingProgress)
+admin.site.register(Genre)

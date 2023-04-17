@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webble</title>
+</head>
+<body class="container">
+  <div class="row">
+    {% include 'navbar.html' %}
+    <div class="col-md-4 offset-md-4">
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </div>
+</body>
+</html>
