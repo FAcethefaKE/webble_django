@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
-from django.contrib.auth import login, logout, authenticate
+from .models import Book
+from django.contrib.auth import login
 
 
 def sign_up(request):
@@ -13,3 +14,8 @@ def sign_up(request):
     else:
         form = RegistrationForm()
     return render(request, 'registration/sign_up.html', {"form": form})
+
+
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'library/books.html', {'books': books})
